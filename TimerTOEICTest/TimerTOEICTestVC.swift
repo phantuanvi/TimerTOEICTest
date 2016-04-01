@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class TimerTOEICTestVC: UIViewController {
 
@@ -19,7 +20,9 @@ class TimerTOEICTestVC: UIViewController {
     // Variable
     var timer = NSTimer()
     var timeCount: NSTimeInterval = 0.0 // counter for the timer
-    var timeInterval: NSTimeInterval = 0.1
+    var timeInterval: NSTimeInterval = 1
+    
+    var player: AVAudioPlayer = AVAudioPlayer()
     
     // Model
     var parts: [Part]!
@@ -30,7 +33,7 @@ class TimerTOEICTestVC: UIViewController {
         tableView.allowsSelection = false
         stopButton.enabled = true
         
-        timeCount = checkMinute(true)
+        timeCount = checkMinute(true) * 60
         
         if (timeCount > 0) {
             timer = NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self, selector: "countDown", userInfo: nil, repeats: true)
@@ -63,6 +66,20 @@ class TimerTOEICTestVC: UIViewController {
         if timeCount <= 0 {
             
             timer.invalidate()
+            
+            let audioPath = NSBundle.mainBundle().pathForResource("beep", ofType: "mp3")!
+            do {
+                try player = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: audioPath))
+                player.play()
+            } catch {
+                print("error audio")
+            }
+            
+            let alert = UIAlertController(title: "Alert", message: "Timer has finished", preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            alert.addAction(okAction)
+            presentViewController(alert, animated: true, completion: nil)
+            
             willStart()
             resetAllPart()
         }
@@ -74,9 +91,8 @@ class TimerTOEICTestVC: UIViewController {
         
         let minutes = Int(time) / 60
         let seconds = time - Double(minutes) * 60
-        let secondsFraction = seconds - Double(Int(seconds))
         
-        return String(format: "%02i:%02i:%01i", minutes, Int(seconds), Int(secondsFraction * 10))
+        return String(format: "%02i:%02i", minutes, Int(seconds))
     }
     
     // stage ready for start
@@ -90,7 +106,7 @@ class TimerTOEICTestVC: UIViewController {
     func resetAllPart() {
         tempParts = parts
         timeCount = 0.0
-        timerLabel.text = "00:00:0"
+        timerLabel.text = "00:00"
         
         tableView.reloadData()
     }
@@ -116,11 +132,11 @@ class TimerTOEICTestVC: UIViewController {
         
         let listening = Part(Part: "Listening", Min: 45)
         parts.append(listening)
-        let part5 = Part(Part: "Part 5", Min: 50.0)
+        let part5 = Part(Part: "Part 5", Min: 20)
         parts.append(part5)
-        let part6 = Part(Part: "Part 6", Min: 60.0)
+        let part6 = Part(Part: "Part 6", Min: 10)
         parts.append(part6)
-        let part7 = Part(Part: "Part 7", Min: 70.0)
+        let part7 = Part(Part: "Part 7", Min: 45)
         parts.append(part7)
         
         tempParts = parts
@@ -132,6 +148,7 @@ class TimerTOEICTestVC: UIViewController {
         
         startButton.enabled = false
         stopButton.enabled = false
+        
     }
 
     

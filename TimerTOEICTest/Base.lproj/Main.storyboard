@@ -102,10 +102,10 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFY-vM-mhm">
-                                <rect key="frame" x="154" y="72" width="292" height="84"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFY-vM-mhm">
+                                <rect key="frame" x="206" y="72" width="189" height="84"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="292" id="I9g-ZF-5ZA"/>
+                                    <constraint firstAttribute="width" constant="189" id="I9g-ZF-5ZA"/>
                                     <constraint firstAttribute="height" constant="84" id="dfu-ez-aHR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
