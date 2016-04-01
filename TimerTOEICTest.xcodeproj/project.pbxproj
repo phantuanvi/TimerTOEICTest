@@ -7,17 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CA0B2DC1CAEB4F0001AE9A9 /* TOEICTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA0B2DB1CAEB4F0001AE9A9 /* TOEICTableViewCell.swift */; };
+		0CA0B2DE1CAEB508001AE9A9 /* Part.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA0B2DD1CAEB508001AE9A9 /* Part.swift */; };
+		0CC826F21CAEB913001229C7 /* TimerTOEICTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC826F11CAEB913001229C7 /* TimerTOEICTestVC.swift */; };
 		0CF3BE451CAEAA610067012F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF3BE441CAEAA610067012F /* AppDelegate.swift */; };
-		0CF3BE471CAEAA610067012F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF3BE461CAEAA610067012F /* ViewController.swift */; };
 		0CF3BE4A1CAEAA610067012F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CF3BE481CAEAA610067012F /* Main.storyboard */; };
 		0CF3BE4C1CAEAA610067012F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CF3BE4B1CAEAA610067012F /* Assets.xcassets */; };
 		0CF3BE4F1CAEAA610067012F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CF3BE4D1CAEAA610067012F /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CA0B2DB1CAEB4F0001AE9A9 /* TOEICTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TOEICTableViewCell.swift; sourceTree = "<group>"; };
+		0CA0B2DD1CAEB508001AE9A9 /* Part.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Part.swift; sourceTree = "<group>"; };
+		0CC826F11CAEB913001229C7 /* TimerTOEICTestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTOEICTestVC.swift; sourceTree = "<group>"; };
 		0CF3BE411CAEAA600067012F /* TimerTOEICTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimerTOEICTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CF3BE441CAEAA610067012F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0CF3BE461CAEAA610067012F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0CF3BE491CAEAA610067012F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0CF3BE4B1CAEAA610067012F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CF3BE4E1CAEAA610067012F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,11 +59,13 @@
 			isa = PBXGroup;
 			children = (
 				0CF3BE441CAEAA610067012F /* AppDelegate.swift */,
-				0CF3BE461CAEAA610067012F /* ViewController.swift */,
 				0CF3BE481CAEAA610067012F /* Main.storyboard */,
+				0CC826F11CAEB913001229C7 /* TimerTOEICTestVC.swift */,
 				0CF3BE4B1CAEAA610067012F /* Assets.xcassets */,
 				0CF3BE4D1CAEAA610067012F /* LaunchScreen.storyboard */,
 				0CF3BE501CAEAA610067012F /* Info.plist */,
+				0CA0B2DB1CAEB4F0001AE9A9 /* TOEICTableViewCell.swift */,
+				0CA0B2DD1CAEB508001AE9A9 /* Part.swift */,
 			);
 			path = TimerTOEICTest;
 			sourceTree = "<group>";
@@ -136,8 +142,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CF3BE471CAEAA610067012F /* ViewController.swift in Sources */,
+				0CA0B2DE1CAEB508001AE9A9 /* Part.swift in Sources */,
+				0CA0B2DC1CAEB4F0001AE9A9 /* TOEICTableViewCell.swift in Sources */,
 				0CF3BE451CAEAA610067012F /* AppDelegate.swift in Sources */,
+				0CC826F21CAEB913001229C7 /* TimerTOEICTestVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +293,7 @@
 				0CF3BE551CAEAA610067012F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
