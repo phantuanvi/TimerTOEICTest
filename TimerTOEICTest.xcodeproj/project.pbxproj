@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C26EAC01D20052A00B4E24D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C26EABF1D20052A00B4E24D /* Constants.swift */; };
 		0CA0B2DC1CAEB4F0001AE9A9 /* TOEICTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA0B2DB1CAEB4F0001AE9A9 /* TOEICTableViewCell.swift */; };
 		0CA0B2DE1CAEB508001AE9A9 /* Part.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA0B2DD1CAEB508001AE9A9 /* Part.swift */; };
 		0CC826F21CAEB913001229C7 /* TimerTOEICTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC826F11CAEB913001229C7 /* TimerTOEICTestVC.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C26EABF1D20052A00B4E24D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0CA0B2DB1CAEB4F0001AE9A9 /* TOEICTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TOEICTableViewCell.swift; sourceTree = "<group>"; };
 		0CA0B2DD1CAEB508001AE9A9 /* Part.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Part.swift; sourceTree = "<group>"; };
 		0CC826F11CAEB913001229C7 /* TimerTOEICTestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTOEICTestVC.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				0CF3BE501CAEAA610067012F /* Info.plist */,
 				0CA0B2DB1CAEB4F0001AE9A9 /* TOEICTableViewCell.swift */,
 				0CA0B2DD1CAEB508001AE9A9 /* Part.swift */,
+				0C26EABF1D20052A00B4E24D /* Constants.swift */,
 				0CC826F31CAED45C001229C7 /* beep.mp3 */,
 			);
 			path = TimerTOEICTest;
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C26EAC01D20052A00B4E24D /* Constants.swift in Sources */,
 				0CA0B2DE1CAEB508001AE9A9 /* Part.swift in Sources */,
 				0CA0B2DC1CAEB4F0001AE9A9 /* TOEICTableViewCell.swift in Sources */,
 				0CF3BE451CAEAA610067012F /* AppDelegate.swift in Sources */,

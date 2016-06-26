@@ -36,7 +36,7 @@ class TimerTOEICTestVC: UIViewController {
         timeCount = checkMinute(true) * 60
         
         if (timeCount > 0) {
-            timer = NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self, selector: "countDown", userInfo: nil, repeats: true)
+            timer = NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self, selector: #selector(TimerTOEICTestVC.countDown), userInfo: nil, repeats: true)
             startButton.enabled = false
         }
         if timeCount == 0 {
@@ -180,8 +180,14 @@ extension TimerTOEICTestVC: UITableViewDataSource {
         
         let part = tempParts[indexPath.row]
         if indexPath.row < tempParts.count {
+            
             cell.partLabel.text = part.toeicPart
             cell.minLabel.text = "\(Int(part.toeicMin)) min"
+            
+            cell.backgroundColor = MAINCOLOR
+            cell.partLabel.textColor = TEXTCOLOR
+            cell.minLabel.textColor = TEXTCOLOR
+            cell.checkedLabel.textColor = TEXTCOLOR
             
             configureCheckmarkForCell(cell, part: part)
         }
