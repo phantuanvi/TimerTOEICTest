@@ -18,9 +18,9 @@ class TimerTOEICTestVC: UIViewController {
     @IBOutlet weak var stopButton: UIButton!
     
     // Variable
-    var timer = NSTimer()
-    var timeCount: NSTimeInterval = 0.0 // counter for the timer
-    var timeInterval: NSTimeInterval = 1
+    var timer = Timer()
+    var timeCount: TimeInterval = 0.0 // counter for the timer
+    var timeInterval: TimeInterval = 1
     
     var player: AVAudioPlayer = AVAudioPlayer()
     
@@ -28,29 +28,29 @@ class TimerTOEICTestVC: UIViewController {
     var parts: [Part]!
     var tempParts: [Part]!
     
-    @IBAction func startPressed(sender: UIButton) {
+    @IBAction func startPressed(_ sender: UIButton) {
         
         tableView.allowsSelection = false
-        stopButton.enabled = true
+        stopButton.isEnabled = true
         
         timeCount = checkMinute(true) * 60
         
         if (timeCount > 0) {
-            timer = NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self, selector: #selector(TimerTOEICTestVC.countDown), userInfo: nil, repeats: true)
-            startButton.enabled = false
+            timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(TimerTOEICTestVC.countDown), userInfo: nil, repeats: true)
+            startButton.isEnabled = false
         }
         if timeCount == 0 {
             
-            let alert = UIAlertController(title: "Alert", message: "Please choose the part first", preferredStyle: UIAlertControllerStyle.Alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            let alert = UIAlertController(title: "Alert", message: "Please choose the part first", preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
             alert.addAction(okAction)
-            presentViewController(alert, animated: true, completion: { () -> Void in
+            present(alert, animated: true, completion: { () -> Void in
                 self.willStart()
             })
         }
     }
     
-    @IBAction func stopPressed(sender: UIButton) {
+    @IBAction func stopPressed(_ sender: UIButton) {
         
         timer.invalidate()
         
@@ -67,18 +67,18 @@ class TimerTOEICTestVC: UIViewController {
             
             timer.invalidate()
             
-            let audioPath = NSBundle.mainBundle().pathForResource("beep", ofType: "mp3")!
+            let audioPath = Bundle.main.path(forResource: "beep", ofType: "mp3")!
             do {
-                try player = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: audioPath))
+                try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath))
                 player.play()
             } catch {
                 print("error audio")
             }
             
-            let alert = UIAlertController(title: "Alert", message: "Timer has finished", preferredStyle: UIAlertControllerStyle.Alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            let alert = UIAlertController(title: "Alert", message: "Timer has finished", preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
             alert.addAction(okAction)
-            presentViewController(alert, animated: true, completion: nil)
+            present(alert, animated: true, completion: nil)
             
             willStart()
             resetAllPart()
@@ -87,7 +87,7 @@ class TimerTOEICTestVC: UIViewController {
     }
     
     // converter timeCount to time
-    func timeString(time: NSTimeInterval) -> String {
+    func timeString(_ time: TimeInterval) -> String {
         
         let minutes = Int(time) / 60
         let seconds = time - Double(minutes) * 60
@@ -98,8 +98,8 @@ class TimerTOEICTestVC: UIViewController {
     // stage ready for start
     func willStart() {
         tableView.allowsSelection = true
-        startButton.enabled = true
-        stopButton.enabled = false
+        startButton.isEnabled = true
+        stopButton.isEnabled = false
     }
     
     // reset timeCount
@@ -112,7 +112,7 @@ class TimerTOEICTestVC: UIViewController {
     }
     
     // sum all min checked
-    func checkMinute(flag: Bool) -> Double {
+    func checkMinute(_ flag: Bool) -> Double {
         var sumMinute = 0.0
         if flag {
             for i in 0..<tempParts.count {
@@ -146,8 +146,8 @@ class TimerTOEICTestVC: UIViewController {
         tableView.dataSource = self
         tableView.alwaysBounceVertical = false
         
-        startButton.enabled = false
-        stopButton.enabled = false
+        startButton.isEnabled = false
+        stopButton.isEnabled = false
         
     }
 
@@ -156,30 +156,30 @@ class TimerTOEICTestVC: UIViewController {
 }
 
 extension TimerTOEICTestVC: UITableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) as? TOEICTableViewCell {
+        if let cell = tableView.cellForRow(at: indexPath) as? TOEICTableViewCell {
             
-            let part = parts[indexPath.row]
+            let part = parts[(indexPath as NSIndexPath).row]
             part.toggleChecked()
             
             configureCheckmarkForCell(cell, part: part)
         }
-        startButton.enabled = true
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        startButton.isEnabled = true
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
 extension TimerTOEICTestVC: UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tempParts.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TOEICTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TOEICTableViewCell
         
-        let part = tempParts[indexPath.row]
-        if indexPath.row < tempParts.count {
+        let part = tempParts[(indexPath as NSIndexPath).row]
+        if (indexPath as NSIndexPath).row < tempParts.count {
             
             cell.partLabel.text = part.toeicPart
             cell.minLabel.text = "\(Int(part.toeicMin)) min"
@@ -195,7 +195,7 @@ extension TimerTOEICTestVC: UITableViewDataSource {
         return cell
     }
     
-    func configureCheckmarkForCell(cell: TOEICTableViewCell, part: Part) {
+    func configureCheckmarkForCell(_ cell: TOEICTableViewCell, part: Part) {
         
         if (part.checked != false) {
             cell.checkedLabel.text = "√"
