@@ -60,7 +60,7 @@ class TimerTOEICTestVC: UIViewController {
     }
     
     // count
-    func countDown() {
+    @objc func countDown() {
         
         timeCount = timeCount - timeInterval
         if timeCount <= 0 {
